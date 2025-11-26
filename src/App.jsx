@@ -1,7 +1,9 @@
-import { PrimaryButton } from "./components/atoms/buttons/PrimaryButton";
-import { SecondaryButton } from "./components/atoms/buttons/SecondaryButton";
-import { SearchInput } from "./components/molecules/SearchInput";
-import { UserCard } from "./components/organisms/user/UserCard";
+import { BrowserRouter } from "react-router-dom";
+import { PrimaryButton } from "/src/components/atoms/buttons/PrimaryButton";
+import { SecondaryButton } from "/src/components/atoms/buttons/SecondaryButton";
+import { SearchInput } from "/src/components/molecules/SearchInput";
+import { UserCard } from "/src/components/organisms/user/UserCard";
+import { DefaultLayout } from "/src/components/templates/DefaultLayout";
 import "./style.css";
 
 const user = {
@@ -17,13 +19,15 @@ const user = {
 
 function App() {
   return (
-    <div className="App">
-      <PrimaryButton>テスト</PrimaryButton>
-      <SecondaryButton>検索</SecondaryButton>
-      <br />
-      <SearchInput />
-      <UserCard user={user} />
-    </div>
+    <BrowserRouter>
+      <DefaultLayout className="App">
+        <PrimaryButton>テスト</PrimaryButton>
+        <SecondaryButton>検索</SecondaryButton>
+        <br />
+        <SearchInput />
+        <UserCard user={user} />
+      </DefaultLayout>
+    </BrowserRouter>
   );
 }
 
