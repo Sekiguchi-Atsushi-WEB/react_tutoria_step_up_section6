@@ -1,5 +1,5 @@
 import { Header } from "/src/components/atoms/layout/Header";
-import { Footer } from "../atoms/layout/Footer";
+import { Footer } from "/src/components/atoms/layout/Footer";
 
 export const DefaultLayout = (props) => {
   const { children } = props;
