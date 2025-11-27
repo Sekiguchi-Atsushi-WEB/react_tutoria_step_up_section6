@@ -4,13 +4,15 @@ import styled from "styled-components";
 
 export const UserIconWithName = (props) => {
   const { image, name } = props;
-  const context = useContext(UserContext);
-  console.log(context);
+  const { userInfo } = useContext(UserContext);
+  const isAdmin = userInfo?.isAdmin ?? false;
+  // console.log(userInfo);
 
   return (
     <SContainer>
       <SImage height={160} width={160} src={image} alt={name} />
       <SName>{name}</SName>
+      {isAdmin && <Sedit>編集</Sedit>}
     </SContainer>
   );
 };
@@ -25,4 +27,11 @@ const SName = styled.p`
   font-size: 18px;
   font-weight: bold;
   margin: 0px;
+`;
+const Sedit = styled.p`
+  color: #777;
+  font-size: 16px;
+  text-decoration: underline;
+  margin: 4px 0px 0px 0px;
+  cursor: pointer;
 `;
