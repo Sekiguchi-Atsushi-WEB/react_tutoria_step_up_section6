@@ -1,19 +1,30 @@
-import styled from "styled-components";
+import { useContext } from "react";
+import { UserContext } from "/src/providers/UserContext";
 import { SearchInput } from "/src/components/molecules/SearchInput";
 import { UserCard } from "/src/components/organisms/user/UserCard";
+import { SecondaryButton } from "/src/components/atoms/buttons/SecondaryButton";
+import styled from "styled-components";
 import users from "/src/users"; // ユーザーデータをインポート
 
 /**
  * Usersページ
  */
 export const Users = () => {
+  const { userInfo, setUserInfo } = useContext(UserContext);
+  const onClickSwitch = () => {
+    const isAdmin = userInfo?.isAdmin ?? false; //ナリッシュ・コアレッシングな書き方
+    setUserInfo({ ...userInfo, isAdmin: !isAdmin });
+  };
+
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
+      <SecondaryButton onClick={onClickSwitch}>切り替え</SecondaryButton>
+      <br />
       <SearchInput placeholder="検索条件を入力してください" />
       <SUserCards>
         {users.map((user) => {
-          return <UserCard key={users.id} user={user} />;
+          return <UserCard key={user.id} user={user} />;
         })}
       </SUserCards>
     </SContainer>

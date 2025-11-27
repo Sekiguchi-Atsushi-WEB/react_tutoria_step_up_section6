@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { useContext } from "react";
 import { UserContext } from "/src/providers/UserContext";
 import styled from "styled-components";
 
-export const UserIconWithName = (props) => {
+export const UserIconWithName = memo((props) => {
   const { image, name } = props;
   const { userInfo } = useContext(UserContext);
   const isAdmin = userInfo?.isAdmin ?? false;
@@ -15,7 +16,8 @@ export const UserIconWithName = (props) => {
       {isAdmin && <Sedit>編集</Sedit>}
     </SContainer>
   );
-};
+});
+
 const SContainer = styled.div`
   text-align: center;
 `;
