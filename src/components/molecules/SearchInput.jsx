@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { PrimaryButton } from "../atoms/buttons/PrimaryButton";
 import { Input } from "../atoms/inputs/Input";
 
-export const SearchInput = memo(() => {
+export const SearchInput = memo(({ placeholder = "検索条件を入力" }) => {
   return (
     <SContainer>
-      <Input placeholder="検索条件を入力" />
+      <Input placeholder={placeholder} />
       <PrimaryButton>検索</PrimaryButton>
     </SContainer>
   );

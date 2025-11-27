@@ -10,10 +10,13 @@ import users from "/src/users"; // ユーザーデータをインポート
  * Usersページ
  */
 export const Users = () => {
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { setUserInfo } = useContext(UserContext);
   const onClickSwitch = () => {
-    const isAdmin = userInfo?.isAdmin ?? false; //ナリッシュ・コアレッシングな書き方
-    setUserInfo({ ...userInfo, isAdmin: !isAdmin });
+    // prev を参照する関数型アップデートにして null 安全にしている
+    setUserInfo((prev) => ({
+      ...(prev ?? {}),
+      isAdmin: !(prev?.isAdmin ?? false),
+    }));
   };
 
   return (
